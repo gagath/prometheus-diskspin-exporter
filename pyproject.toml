@@ -7,15 +7,15 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "prometheus-hdparm-exporter"
+name = "prometheus-diskspin-exporter"
 version = "1.0"
 requires-python = ">= 3.12"
 
 [project.scripts]
-prometheus-hdparm-exporter = "prometheus_hdparm_exporter.main:main"
+prometheus-diskspin-exporter = "prometheus_diskspin_exporter.main:main"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/prometheus_hdparm_exporter"]
+packages = ["src/prometheus_diskspin_exporter"]
 
 [tool.pytest.ini_options]
 addopts = [

@@ -6,9 +6,9 @@ SPDX-License-Identifier: GPL-3.0-only
 
 <p align="center"><img src="docs/logo.gif" alt="logo" width="75%" /></p>
 
-# prometheus-hdparm-exporter
+# prometheus-diskspin-exporter
 
-prometheus-hdparm-exporter is a zero-dependency Python program that will export
+prometheus-diskspin-exporter is a zero-dependency Python program that will export
 the power state of the SATA disks found on the host and expose them to an HTTP
 endpoint for consumption by [Prometheus](https://prometheus.io/).
 
@@ -30,13 +30,13 @@ filesystem.
 ## Usage
 
 ```text
-prometheus-hdparm-exporter HOST PORT
+prometheus-diskspin-exporter HOST PORT
 ```
 
 ## Example
 
 ```
-$ sudo prometheus-hdparm-exporter localhost 8000 &
+$ sudo prometheus-diskspin-exporter localhost 8000 &
 $ curl localhost:8000/metrics
 hdparm_disk_power_status{disk="/dev/sda",status="standby"} 1 1731616722000
 hdparm_disk_power_status{disk="/dev/sdb",status="standby"} 1 1731616722000
@@ -60,22 +60,22 @@ The code fits a single file `main.py` and can easily be distributed on hosts
 manually:
 
 ```
-curl https://raw.githubusercontent.com/gagath/prometheus-hdparm-exporter/refs/heads/main/src/prometheus_hdparm_exporter/main.py \
-    -o /opt/prometheus_hdparm_exporter.py
+curl https://raw.githubusercontent.com/gagath/prometheus-diskspin-exporter/refs/heads/main/src/prometheus_diskspin_exporter/main.py \
+    -o /opt/prometheus_diskspin_exporter.py
 ```
 
 If you want to install the systemd service:
 
 ```
-curl https://raw.githubusercontent.com/gagath/prometheus-hdparm-exporter/refs/heads/main/systemd/prometheus-hdparm-exporter.service \
-    -o /etc/systemd/system/prometheus-hdparm-exporter.service
+curl https://raw.githubusercontent.com/gagath/prometheus-diskspin-exporter/refs/heads/main/systemd/prometheus-diskspin-exporter.service \
+    -o /etc/systemd/system/prometheus-diskspin-exporter.service
 ```
 
 If you want to install the AppArmor configuration:
 
 ```
-curl https://raw.githubusercontent.com/gagath/prometheus-hdparm-exporter/refs/heads/main/apparmor.d/opt.prometheus_hdparm_exporter \
-    -o /etc/apparmor.d/opt.prometheus_hdparm_exporter
+curl https://raw.githubusercontent.com/gagath/prometheus-diskspin-exporter/refs/heads/main/apparmor.d/opt.prometheus_diskspin_exporter \
+    -o /etc/apparmor.d/opt.prometheus_diskspin_exporter
 ```
 
 ## Grafana configuration

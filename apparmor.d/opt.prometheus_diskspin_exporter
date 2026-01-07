@@ -5,16 +5,16 @@
 include <tunables/global>
 
 # vim:syntax=apparmor
-# AppArmor policy for prometheus_hdparm_exporter.py
+# AppArmor policy for prometheus_diskspin_exporter.py
 
-/opt/prometheus_hdparm_exporter.py {
+/opt/prometheus_diskspin_exporter.py {
   include <abstractions/base>
   include <abstractions/python>
 
   # python3
   /usr/bin/python3.12 mrix,
   /etc/ld.so.cache r,
-  /opt/prometheus_hdparm_exporter.py r,
+  /opt/prometheus_diskspin_exporter.py r,
   owner /etc/host.conf r,
   owner /etc/hosts r,
   owner /etc/nsswitch.conf r,

@@ -4,7 +4,7 @@
 
 from datetime import datetime
 
-from prometheus_hdparm_exporter import main
+from prometheus_diskspin_exporter import main
 
 
 def test_is_sata_disk():

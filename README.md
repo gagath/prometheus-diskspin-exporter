@@ -39,8 +39,8 @@ prometheus-diskspin-exporter HOST PORT
 ## Example
 
 ```
-$ sudo prometheus-diskspin-exporter localhost 8000 &
-$ curl localhost:8000/metrics
+$ sudo prometheus-diskspin-exporter localhost 28101 &
+$ curl localhost:28101/metrics
 hdparm_disk_power_status{disk="/dev/sda",status="standby"} 1 1731616722000
 hdparm_disk_power_status{disk="/dev/sdb",status="standby"} 1 1731616722000
 hdparm_disk_power_status{disk="/dev/sdc",status="standby"} 1 1731616722000

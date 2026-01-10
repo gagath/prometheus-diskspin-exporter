@@ -4,7 +4,7 @@ After=syslog.target network.target
 
 [Service]
 Type=exec
-ExecStart=/opt/prometheus_diskspin_exporter.py "" 8000
+ExecStart=/opt/prometheus_diskspin_exporter.py "" 28101
 
 [Install]
 WantedBy=multi-user.target

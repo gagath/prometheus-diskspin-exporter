@@ -8,9 +8,8 @@ SPDX-License-Identifier: GPL-3.0-only
 
 # prometheus-diskspin-exporter
 
-*Note: this project was recently renamed from prometheus-hdparm-exporter to
-avoid a [possible name
-conflict](https://github.com/nuz014/hdparm_prometheus_exporter).*
+*Note: this project was renamed from prometheus-hdparm-exporter to avoid a
+[possible name conflict](https://github.com/nuz014/hdparm_prometheus_exporter).*
 
 prometheus-diskspin-exporter is a zero-dependency Python program that will export
 the power state of the SATA disks found on the host and expose them to an HTTP

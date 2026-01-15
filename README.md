@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: 2024 Agathe Porte <microjoe@microjoe.org>
+SPDX-FileCopyrightText: 2024 Agathe Porte
 
 SPDX-License-Identifier: GPL-3.0-only
 -->

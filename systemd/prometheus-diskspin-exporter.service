@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2026 Agathe Porte
+#
+# SPDX-License-Identifier: GPL-3.0-only
+
 [Unit]
 Description=Export hdparm stats for Prometheus
 After=syslog.target network.target

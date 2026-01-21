@@ -65,6 +65,7 @@ manually:
 ```
 curl https://raw.githubusercontent.com/gagath/prometheus-diskspin-exporter/refs/heads/main/src/prometheus_diskspin_exporter/main.py \
     -o /opt/prometheus_diskspin_exporter.py
+chmod +x /opt/prometheus_diskspin_exporter.py
 ```
 
 If you want to install the systemd service:

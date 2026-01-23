@@ -21,7 +21,7 @@ and parses the status of each SATA disk `/dev/sd*` reported by `lsblk`.
 The program limits queries on SATA disks because NVME SSDs and other disk
 types will often response with an `unknown` status to the `hdparm -C` command.
 
-This way we can monitor disk spin status to be sure that the spin policy works
+This way one can monitor disk spin status to be sure that the spin policy works
 correctly: energy is saved and noise is reduced when not in use, and disks
 do not spin up and down too often to prevent wear.
 

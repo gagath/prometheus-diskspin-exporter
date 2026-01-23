@@ -1,0 +1,93 @@
+.\" SPDX-FileCopyrightText: 2024 Agathe Porte
+.\"
+.\" SPDX-License-Identifier: GPL-3.0-only
+
+.TH prometheus-diskspin-exporter 1 "2026-01-24"
+
+.SH NAME
+
+prometheus-diskspin-exporter -  Monitor spinning rust disks in Prometheus.
+
+.SH SYNOPSIS
+
+.B
+prometheus-diskspin-exporter
+.I
+INTERFACE PORT
+
+.SH DESCRIPTION
+
+.P
+prometheus-diskspin-exporter is a zero-dependency Python program
+that will export the power state of the SATA disks found on the
+host and expose them to an HTTP endpoint for consumption by
+Prometheus.
+
+.P
+It monitors if the disks are correctly shut down according to
+scheduled time in the disk or manual calls to
+.I
+hdparm -y.
+It calls
+.I
+hdparm -C
+on every request and parses the status of each SATA disk /dev/sd*
+reported by lsblk. The program limits queries on SATA disks because
+NVME SSDs and other disk types will often response with an unknown
+status to the
+.I
+hdparm -C
+command.
+
+.P
+This way one can monitor disk spin status to be sure that the spin
+policy works correctly: energy is saved and noise is reduced when
+not in use, and disks do not spin up and down too often to
+prevent wear.
+
+.SH OPTIONS
+
+.I
+INTERFACE
+Network interface to bind to.
+.RS
+An empty string binds on all interfaces.
+.RE
+
+.I
+PORT
+Network port to listen on.
+
+.SH EXAMPLES
+
+Below is an example output of an HTTP response sent from the server:
+
+.EX
+hdparm_disk_power_status{disk="/dev/sda",status="standby"} 1 1731616722000
+hdparm_disk_power_status{disk="/dev/sdb",status="standby"} 1 1731616722000
+hdparm_disk_power_status{disk="/dev/sdc",status="standby"} 1 1731616722000
+hdparm_disk_power_status{disk="/dev/sdd",status="active/idle"} 1 1731616722000
+.EE
+
+.SH BUGS
+
+The server will reply for any URL, not only /metrics. This is because
+this is the only thing the server do and there is no point in parsing
+the query url to match it.
+
+The server will run
+.I
+lsblk
+and
+.I
+hdparm -C
+on every request. This may DDoS your machine if an attacker spams the
+server. Always make sure to allow access to this HTTP server only for
+authorized users.
+
+See https://github.com/gagath/prometheus-diskspin-exporter/issues
+
+.SH SEE ALSO
+
+.BR hdparm (1),
+.BR lsblk (1)
